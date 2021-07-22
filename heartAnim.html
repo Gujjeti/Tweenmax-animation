@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+      integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      span {
+        position: absolute;
+        background: url(heart.png);
+        pointer-events: none;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: 100px;
+        animation: animate 2s linear infinite;
+        background-size: cover;
+      }
+
+      @keyframes animate {
+        0% {
+          transform: translate(-50%, -50%);
+          filter: hue-rotate(0);
+        }
+
+        100% {
+          transform: translate(-50%, -1000%);
+          filter: hue-rotate(720deg);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-dark">
+    <script>
+      document.addEventListener("mousemove", e => {
+        var body = document.querySelector("body");
+        var heart = document.createElement("span");
+
+        var x = e.offsetX;
+        var y = e.offsetY;
+        heart.style.left = x + "px";
+        heart.style.top = y + "px";
+        var size = Math.random() * 100;
+        heart.style.width = 20 + size + "px";
+        heart.style.height = 20 + size + "px";
+        body.appendChild(heart);
+
+        setTimeout(function() {
+          heart.remove();
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>
